@@ -9,10 +9,10 @@ import time
 import subprocess
 from datetime import datetime
 
-# Ignorar avisos específicos
+
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
-# Caminho para o binário portátil do ffmpeg
+
 if getattr(sys, 'frozen', False):
     FFMPEG_PATH = os.path.join(sys._MEIPASS, 'bin', 'ffmpeg.exe')
 else:
@@ -20,17 +20,17 @@ else:
 
 def escolher_arquivo():
     root = tk.Tk()
-    root.withdraw()  # Esconder a janela principal
-    root.lift()  # Eleva a janela "root" ao topo
-    root.attributes("-topmost", True)  # Garante que a janela de diálogo fique no topo
+    root.withdraw()
+    root.lift()
+    root.attributes("-topmost", True)
 
     caminho_arquivo = filedialog.askopenfilename(
         title="Selecionar arquivo de áudio",
         filetypes=[("Audio Files", "*.wav;*.mp3;*.flac;*.ogg;*.opus")]
     )
 
-    root.attributes("-topmost", False)  # Desabilita a propriedade "topmost" após a seleção
-    root.destroy()  # Destruir a janela root ao terminar
+    root.attributes("-topmost", False)
+    root.destroy()
     return caminho_arquivo
 
 def converter_para_wav(caminho_arquivo):
@@ -125,5 +125,5 @@ def menu_principal():
                 return
             time.sleep(0.1)
 
-# Iniciar o menu principal
+
 menu_principal()
